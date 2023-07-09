@@ -21,10 +21,6 @@ class NekoPoi(Methods):
 
     async def _request(self, endpoint: str = "/", *args, **kwargs) -> Response:
         async with self._client as client:
-            res = await client.get(
-                self.BASE_URL + endpoint,
-                headers=self.HEADERS,
-                *args,
-                **kwargs
+            return await client.get(
+                self.BASE_URL + endpoint, headers=self.HEADERS, *args, **kwargs
             )
-            return res
