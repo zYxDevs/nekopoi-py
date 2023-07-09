@@ -44,10 +44,8 @@ class Methods:
         term_id: t.Union[int, t.List[int]]
     ) -> Search:
         if isinstance(term_id, list):
-            params = ""
-            for term in term_id:
-                params += f"term={term}&"
-            params = params[0:-1]
+            params = "".join(f"term={term}&" for term in term_id)
+            params = params[:-1]
         else:
             params = term_id
         res = await self._request("/searchByGenre", params={"term": term_id})

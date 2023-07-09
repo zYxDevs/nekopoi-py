@@ -9,10 +9,7 @@ def slugified(title: str) -> str:
 
 
 def slugified_web_url(title: str, slug: t.Optional[str] = None) -> str:
-    if slug:
-        slugified = slugify(slug)
-    else:
-        slugified = slugify(title)
+    slugified = slugify(slug) if slug else slugify(title)
     return f"https://nekopoi.care/{slugified}"
 
 
